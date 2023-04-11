@@ -6,7 +6,6 @@ import { colors } from './colors';
 
 export const globalStyle = css`
   ${reset}
-  ${pretendardFont}
 
   * {
     box-sizing: border-box;
