@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
 
 export const HeaderSection = styled.header`
-  width: 100%;
+  width: 80%;
   height: 10vh;
   display: flex;
 
-  margin-top: 0;
+  margin: 0 auto 0 auto;
 `;
 
 export const Navbar = styled.nav`
@@ -22,7 +22,7 @@ export const ServiceNameContainer = styled.div`
 
 export const ServiceName = styled.h1`
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 500;
   color: #000;
 
   text-align: left;
@@ -40,6 +40,8 @@ export const ToggleMenu = styled.div`
   position: absolute;
   right: 0;
   top: 5px;
+
+  z-index: 99;
 `;
 export const Menu = styled.div`
   position: relative;
