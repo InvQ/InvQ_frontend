@@ -22,9 +22,19 @@ export const App: React.FC = () => {
 };
 
 const MainScreen = styled.main`
-  width: 425px;
+  @media screen and (min-width: 425px) {
+    width: 425px;
+  }
+  @media screen and (max-width: 425px) {
+    width: 100%;
+  }
+  @media screen and (max-width: 376px) {
+    width: 375px;
+  }
+  @media screen and (max-width: 320px) {
+    width: 320px;
+  }
   height: 100vh;
-
   user-select: none;
   display: flex;
   margin: auto;
