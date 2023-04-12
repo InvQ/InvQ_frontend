@@ -25,6 +25,7 @@ const MainScreen = styled.main`
   width: 425px;
   height: 100vh;
 
+  user-select: none;
   display: flex;
   margin: auto;
   background-color: #f2f2f2;
@@ -32,8 +33,7 @@ const MainScreen = styled.main`
 
 const MainSection = styled.section`
   position: relative;
-  width: 90%;
+  width: 100%;
   height: 100%;
-
   margin: auto;
 `;
