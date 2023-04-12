@@ -14,7 +14,7 @@ export const SelectMenu = styled.div`
   }
 `;
 export const SelectLeft = styled.div<{ isClick: boolean }>`
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
 
   cursor: pointer;
@@ -29,7 +29,7 @@ export const SelectVertical = styled.div`
   background-color: #c6c6c6;
 `;
 export const SelectRight = styled.div<{ isClick: boolean }>`
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
 
   cursor: pointer;
