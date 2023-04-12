@@ -12,7 +12,7 @@ export const InvQ: React.FC<InvQArrData> = ({ question, answer }) => {
 
   useEffect(() => {
     if (!answerContainerRef.current) return;
-    answerContainerRef.current.style.minHeight = questionClose ? '60px' : `200px`;
+    answerContainerRef.current.style.minHeight = questionClose ? '70px' : `230px`;
     answerContainerRef.current.style.backgroundColor = questionClose ? '#fff' : '#3B88FF';
   }, [questionClose]);
   return (
