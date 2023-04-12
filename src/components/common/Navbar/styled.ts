@@ -34,12 +34,11 @@ export const ToggleMenuContainer = styled.div`
   position: relative;
 `;
 export const ToggleMenu = styled.div`
-  width: 15px;
-  height: 12px;
+  width: 17px;
+  height: 17px;
   display: flex;
   position: absolute;
   right: 0;
-  top: 5px;
 
   z-index: 99;
 `;
