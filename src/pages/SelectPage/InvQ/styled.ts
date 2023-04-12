@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 
 export const InvQElement = styled.div<{ isClick: boolean }>`
   width: 90%;
-  min-height: 60px;
 
   margin: 10px auto 10px auto;
   border: none;
@@ -16,24 +15,26 @@ export const InvQElement = styled.div<{ isClick: boolean }>`
 `;
 
 export const InvQuestionElement = styled.div`
-  width: 80%;
-  height: 60px;
+  width: 90%;
 
   margin: 0 auto 0 auto;
 `;
 export const InvQuestion = styled.h1<{ isClick: boolean }>`
-  font-size: 16px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  font-size: 18px;
   font-weight: bold;
   text-align: center;
+  line-height: 20px;
   color: ${(props) => (props.isClick ? '#000' : '#fff')};
 
-  padding-top: 22px;
-  padding-bottom: 22px;
+  padding-top: 25px;
+  padding-bottom: 25px;
 `;
 
 export const InvAElement = styled.div<{ isShow: boolean }>`
-  width: 80%;
-  height: 100%;
+  width: 90%;
   display: ${(props) => (props.isShow ? 'none' : 'flex')};
   opacity: ${(props) => (props.isShow ? '0' : '1')};
 
@@ -41,10 +42,10 @@ export const InvAElement = styled.div<{ isShow: boolean }>`
 `;
 
 export const InvA = styled.span`
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 500;
-  line-height: 17px;
+  line-height: 20px;
   color: #fff;
   text-align: left;
-  margin: 20px auto auto auto;
+  margin: 0 auto auto auto;
 `;
