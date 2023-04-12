@@ -19,7 +19,7 @@ export const globalStyle = css`
   body {
     width: 100%;
     height: 100%;
-    color: ${colors.white};
+    color: ${colors.black};
     background-color: ${colors.background};
     font-family: Pretendard;
   }
