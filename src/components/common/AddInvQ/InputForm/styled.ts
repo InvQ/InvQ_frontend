@@ -35,6 +35,7 @@ export const TextAreaElement = styled.textarea`
   width: 100%;
   height: 150px;
 
+  font-size: 16px;
   display: flex;
   outline: none;
   margin: auto;
