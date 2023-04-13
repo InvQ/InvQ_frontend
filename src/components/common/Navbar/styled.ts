@@ -26,6 +26,7 @@ export const ServiceName = styled.h1`
   color: #000;
 
   text-align: left;
+  cursor: pointer;
 `;
 
 export const ToggleMenuContainer = styled.div`
@@ -35,7 +36,7 @@ export const ToggleMenuContainer = styled.div`
 `;
 export const ToggleMenu = styled.div`
   width: 17px;
-  height: 17px;
+  height: 18px;
   display: flex;
   position: absolute;
   right: 0;
@@ -54,7 +55,6 @@ export const Menu = styled.div`
     width: 100%;
     height: 1.5px;
 
-    border-radius: 50%;
     background: #000;
     transition: all 0.2s;
   }
