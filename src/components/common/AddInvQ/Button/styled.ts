@@ -5,7 +5,7 @@ export const ButtonContainer = styled.div`
   height: 55px;
   position: absolute;
 
-  bottom: 0;
+  bottom: 10px;
 `;
 
 export const Button = styled.button`
