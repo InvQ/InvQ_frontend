@@ -13,7 +13,7 @@ export const AdminButtonContainer = styled.div`
 `;
 
 export const CancelButton = styled.button`
-  width: 35%;
+  width: 40%;
   height: 100%;
 
   display: flex;
@@ -32,7 +32,7 @@ export const CancelText = styled.h3`
 `;
 
 export const AgreeButton = styled.button`
-  width: 35%;
+  width: 40%;
   height: 100%;
 
   display: flex;
