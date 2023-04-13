@@ -1,2 +1,2 @@
 export * from './AddInvQ';
-export * from './InvQ';
+export * from './InvQPage';
