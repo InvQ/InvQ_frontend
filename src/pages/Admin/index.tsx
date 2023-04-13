@@ -38,7 +38,7 @@ export const AdminPage: React.FC = () => {
       );
     };
     getInvQs();
-  }, []);
+  }, [invQsCollectionRef]);
   const updateInvQ = async (i: number, status: boolean) => {
     const invDocRef = doc(db, 'request', keyId[i].keyId);
     const invDoc = await getDoc(invDocRef);
@@ -91,7 +91,11 @@ export const AdminPage: React.FC = () => {
       ) : (
         <>
           <strong>인증해주세요</strong>
-          <input type="password" onChange={(event) => setAdminLogin(event.target.value)} />
+          <input
+            style={{ fontSize: '16px' }}
+            type="password"
+            onChange={(event) => setAdminLogin(event.target.value)}
+          />
           <button onClick={() => setSaveAdmin(adminLogin)}>인증</button>
         </>
       )}
