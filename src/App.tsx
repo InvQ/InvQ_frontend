@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import { MainPage } from '@/pages';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { MainPage, AdminPage } from '@/pages';
 import styled from '@emotion/styled';
 import { Navbar } from './components';
 
@@ -9,12 +9,27 @@ export const App: React.FC = () => {
   const ToggleOnClick = () => {
     setToggle(!toggle);
   };
+  const NavigateNavbar = () => {
+    navigate('/');
+  };
+  const location = useLocation();
+  const locationPathName = location.pathname.split('/')[1];
+  const navigate = useNavigate();
+
   return (
     <MainScreen>
       <MainSection>
-        <Navbar toggleOnClick={ToggleOnClick} toggleState={toggle} />
+        <Navbar
+          NavigateOnClick={NavigateNavbar}
+          toggleOnClick={ToggleOnClick}
+          toggleState={toggle}
+          NavbarTitle={locationPathName === 'admin' ? 'admin' : 'InvQ'}
+        />
         <Routes>
-          <Route index element={<MainPage />} />
+          <Route index element={<MainPage />}></Route>
+          <Route path="/question" element={<MainPage />} />
+          <Route path="/answer" element={<MainPage />} />
+          <Route path="/admin" element={<AdminPage />} />
         </Routes>
       </MainSection>
     </MainScreen>
