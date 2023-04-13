@@ -1,58 +1,91 @@
-import React, { lazy, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import * as S from './styled';
 import { SelectMenuComponent } from '@components/Main';
-import { getInvQ } from '@/api/InvQAnswer';
-import { InvQ } from '../SelectPage';
+import { useLocation, useNavigate } from 'react-router';
+import { AddInvQPage, InvQPage } from '../SelectPage';
+import { SelectWhich } from '@components/template';
+import { db } from '@/firebase';
 
-interface ItemType {
-  id: number;
+import { addDoc, collection, getDocs } from 'firebase/firestore';
+
+export interface ItemType {
   question: string;
   answer: string;
-  click: boolean;
+  status: boolean;
 }
 
 export const MainPage: React.FC = () => {
-  const [isAnswer, setIsAnswer] = useState<boolean>(true);
-  const [isRequest, setIsRequest] = useState<boolean>(false);
   const [invQs, setInvQs] = useState<ItemType[]>([
     {
-      id: 0,
       question: '',
       answer: '',
-      click: false,
+      status: false,
     },
   ]);
+
+  const navigate = useNavigate();
+
   const isOnAnswer = () => {
-    setIsAnswer(true);
-    setIsRequest(false);
+    navigate('/');
   };
   const isOnRequest = () => {
-    setIsAnswer(false);
-    setIsRequest(true);
+    navigate('/answer');
   };
+  const location = useLocation();
+  const locationPath = location.pathname.split('/')[1] as 'answer' | '';
+
+  const [invQuestion, setInvQuestion] = useState<string>('');
+  const [invAnswer, setInvAnswer] = useState<string>('');
+  const invQsCollectionRef = collection(db, 'request');
   useEffect(() => {
-    getInvQ('InvQ', 'InvQ_answer_api', 'db').then((res) => {
-      setInvQs(res.frontend);
-    });
+    const getInvQs = async () => {
+      const data = await getDocs(invQsCollectionRef);
+
+      setInvQs(
+        data.docs.map((doc) => ({
+          question: doc.data().question,
+          answer: doc.data().answer,
+          status: doc.data().status,
+        }))
+      );
+    };
+    getInvQs();
   }, []);
-  //이거 state말고 페이지로 만들어야겠다 코딩 개꿀잼이네
+  const createInv = async () => {
+    await addDoc(invQsCollectionRef, { answer: invAnswer, question: invQuestion, status: false });
+  };
+
   return (
     <S.MainPageContainer>
+      <button onClick={() => navigate('/admin')}>ADMIN</button>
       <SelectMenuComponent
         isOnAnswer={isOnAnswer}
-        isAnswer={isAnswer}
+        isAnswer={locationPath === ''}
+        isRequest={locationPath === 'answer'}
         isOnRequest={isOnRequest}
-        isRequest={isRequest}
       />
       <S.MainPageTipContainer>
-        <S.MainPageTip>질문에 말로 대답하고 클릭해서 확인해보세요!</S.MainPageTip>
+        {locationPath === '' ? (
+          <S.MainPageTip>질문에 말로 대답하고 클릭해서 확인해보세요!</S.MainPageTip>
+        ) : (
+          <S.MainPageTip>면접질문과 답변을 추가해 보세요.</S.MainPageTip>
+        )}
       </S.MainPageTipContainer>
-      <S.InvQContainer>
-        {invQs.map((inv, i) => {
-          return <InvQ key={i} question={inv.question} answer={inv.answer} />;
-        })}
-      </S.InvQContainer>
+
+      <SelectWhich
+        SelectTypes={locationPath}
+        question={<InvQPage invQs={invQs} />}
+        answer={
+          <AddInvQPage
+            setInvAnswer={setInvAnswer}
+            setInvQuestion={setInvQuestion}
+            createInv={createInv}
+            invAnswer={invAnswer}
+            invQuestion={invQuestion}
+          />
+        }
+      />
     </S.MainPageContainer>
   );
 };
