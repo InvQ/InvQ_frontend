@@ -27,7 +27,6 @@ export const App: React.FC = () => {
         />
         <Routes>
           <Route index element={<MainPage />}></Route>
-          <Route path="/question" element={<MainPage />} />
           <Route path="/answer" element={<MainPage />} />
           <Route path="/admin" element={<AdminPage />} />
         </Routes>
