@@ -41,7 +41,7 @@ export const ToggleMenu = styled.div`
   position: absolute;
   right: 0;
 
-  z-index: 99;
+  z-index: 10000;
 `;
 export const Menu = styled.div`
   position: relative;
@@ -60,7 +60,7 @@ export const Menu = styled.div`
   }
 `;
 export const MenuLineOne = styled.div<{ isToggle: boolean }>`
-  ${(props) => (props.isToggle ? 'transform: translateY(5.5px) rotate(45deg) ' : '')};
+  ${(props) => (props.isToggle ? 'transform: translateY(6px) rotate(45deg) ' : '')};
 `;
 
 export const MenuLineTwo = styled.div<{ isToggle: boolean }>`
@@ -68,5 +68,5 @@ export const MenuLineTwo = styled.div<{ isToggle: boolean }>`
   ${(props) => (props.isToggle ? 'transform: translateX(-20px)' : '')};
 `;
 export const MenuLineThree = styled.div<{ isToggle: boolean }>`
-  ${(props) => (props.isToggle ? 'transform: translateY(-5.5px) rotate(-45deg)' : '')};
+  ${(props) => (props.isToggle ? 'transform: translateY(-6px) rotate(-45deg)' : '')};
 `;
