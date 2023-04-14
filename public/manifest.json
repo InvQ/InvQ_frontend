@@ -1,11 +1,11 @@
 {
-  "short_name": "GreenCash",
-  "name": "그린캐시",
+  "short_name": "InvQ",
+  "name": "인브큐",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "logo64.png",
+      "sizes": "64x64",
+      "type": "image/png"
     },
     {
       "src": "logo192.png",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "##f2f2f2",
+  "background_color": "#f2f2f2"
 }
