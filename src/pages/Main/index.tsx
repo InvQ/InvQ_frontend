@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import * as S from './styled';
 import { SelectMenuComponent } from '@components/Main';
@@ -39,21 +39,21 @@ export const MainPage: React.FC = () => {
 
   const [invQuestion, setInvQuestion] = useState<string>('');
   const [invAnswer, setInvAnswer] = useState<string>('');
-  const invQsCollectionRef = collection(db, 'request');
-  useEffect(() => {
-    const getInvQs = async () => {
-      const data = await getDocs(invQsCollectionRef);
+  const invQsCollectionRef = collection(db, 'invqRq');
+  const getInvQs = useCallback(async () => {
+    const data = await getDocs(invQsCollectionRef);
+    const invQsData = data.docs.map((doc) => ({
+      question: doc.data().question,
+      answer: doc.data().answer,
+      status: doc.data().status,
+    }));
+    setInvQs(invQsData);
+  }, [invQsCollectionRef]);
 
-      setInvQs(
-        data.docs.map((doc) => ({
-          question: doc.data().question,
-          answer: doc.data().answer,
-          status: doc.data().status,
-        }))
-      );
-    };
+  useEffect(() => {
     getInvQs();
-  }, []);
+  }, [getInvQs]);
+
   const createInv = async () => {
     await addDoc(invQsCollectionRef, { answer: invAnswer, question: invQuestion, status: false });
     setModalState(true);
