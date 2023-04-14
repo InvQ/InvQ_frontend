@@ -8,6 +8,7 @@ import { SelectWhich } from '@components/template';
 import { db } from '@/firebase';
 
 import { addDoc, collection, getDocs } from 'firebase/firestore';
+import { CreateModal } from '@components/modal';
 
 export interface ItemType {
   question: string;
@@ -23,6 +24,7 @@ export const MainPage: React.FC = () => {
       status: false,
     },
   ]);
+  const [modalState, setModalState] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
@@ -54,11 +56,14 @@ export const MainPage: React.FC = () => {
   }, []);
   const createInv = async () => {
     await addDoc(invQsCollectionRef, { answer: invAnswer, question: invQuestion, status: false });
+    setModalState(true);
   };
-
+  const CloseModalHadler = () => {
+    return setModalState(false);
+  };
   return (
     <S.MainPageContainer>
-      <button onClick={() => navigate('/admin')}>ADMIN</button>
+      {modalState ? <CreateModal CloseHandler={CloseModalHadler} /> : <></>}
       <SelectMenuComponent
         isOnAnswer={isOnAnswer}
         isAnswer={locationPath === ''}
