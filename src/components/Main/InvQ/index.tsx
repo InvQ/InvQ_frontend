@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, Suspense, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as S from './styled';
 
 interface InvQArrData {
