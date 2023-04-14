@@ -56,7 +56,7 @@ export const AdminPage: React.FC = () => {
 
   const invQArr = invQs.map((inv, i) =>
     inv.status ? (
-      <strong key={i}>등록 요청이 없습니다.</strong>
+      <strong key={0}>등록 요청이 없습니다.</strong>
     ) : (
       <div key={i}>
         <InvQ question={inv.question} answer={inv.answer} />
