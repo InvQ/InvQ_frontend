@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const InvQContainer = styled.div`
   width: 90%;
-  height: 70vh;
+  height: 65vh;
 
   margin: auto;
   overflow-y: auto;
