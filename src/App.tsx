@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { MainPage, AdminPage } from '@/pages';
 import styled from '@emotion/styled';
-import { Navbar } from './components';
+import { Navbar, TopMenuModal } from './components';
 
 export const App: React.FC = () => {
   const [toggle, setToggle] = useState<boolean>(false);
@@ -18,6 +18,16 @@ export const App: React.FC = () => {
 
   return (
     <MainScreen>
+      {toggle ? (
+        <TopMenuModal
+          CloseHandler={ToggleOnClick}
+          GoAdminOnClick={() => navigate('/admin')}
+          ChangeDarkOnClick={() => alert('개발중')}
+          RegisterOnClick={() => navigate('/answer')}
+        />
+      ) : (
+        <></>
+      )}
       <MainSection>
         <Navbar
           NavigateOnClick={NavigateNavbar}
