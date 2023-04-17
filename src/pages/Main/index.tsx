@@ -41,6 +41,7 @@ export const MainPage: React.FC = () => {
   const [invAnswer, setInvAnswer] = useState<string>('');
   const invQsCollectionRef = collection(db, 'invqRq');
   const getInvQs = useCallback(async () => {
+    console.log(1);
     const data = await getDocs(invQsCollectionRef);
     const invQsData = data.docs.map((doc) => ({
       question: doc.data().question,
@@ -48,7 +49,7 @@ export const MainPage: React.FC = () => {
       status: doc.data().status,
     }));
     setInvQs(invQsData);
-  }, [invQsCollectionRef]);
+  }, []);
 
   useEffect(() => {
     getInvQs();
