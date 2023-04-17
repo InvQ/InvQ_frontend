@@ -22,7 +22,6 @@ export const AdminPage: React.FC = () => {
   const [saveAdmin, setSaveAdmin] = useState('');
   const invQsCollectionRef = collection(db, 'invqRq');
   const getInvQs = useCallback(async () => {
-    console.log(1);
     const data = await getDocs(invQsCollectionRef);
     const invQsData = data.docs.map((doc) => ({
       question: doc.data().question,
@@ -88,7 +87,7 @@ export const AdminPage: React.FC = () => {
   );
   return (
     <>
-      {saveAdmin === import.meta.env.VITE_ADMIN_KEY ? (
+      {localStorage.getItem('Certification') === import.meta.env.VITE_ADMIN_KEY ? (
         <S.AdminContainer>
           <S.AdminPageTipContainer>
             <S.AdminPageTip>요청에 대해 수락 또는 거절해 보세요.</S.AdminPageTip>
@@ -103,7 +102,14 @@ export const AdminPage: React.FC = () => {
             type="password"
             onChange={(event) => setAdminLogin(event.target.value)}
           />
-          <button onClick={() => setSaveAdmin(adminLogin)}>인증</button>
+          <button
+            onClick={() => {
+              setSaveAdmin(adminLogin);
+              localStorage.setItem('Certification', saveAdmin);
+            }}
+          >
+            인증
+          </button>
         </>
       )}
     </>
