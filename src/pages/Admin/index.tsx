@@ -22,6 +22,7 @@ export const AdminPage: React.FC = () => {
   const [saveAdmin, setSaveAdmin] = useState('');
   const invQsCollectionRef = collection(db, 'invqRq');
   const getInvQs = useCallback(async () => {
+    console.log(1);
     const data = await getDocs(invQsCollectionRef);
     const invQsData = data.docs.map((doc) => ({
       question: doc.data().question,
@@ -33,7 +34,7 @@ export const AdminPage: React.FC = () => {
       keyId: doc.id,
     }));
     setKeyId(keyIdData);
-  }, [invQsCollectionRef]);
+  }, []);
 
   useEffect(() => {
     getInvQs();
