@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const InvQElement = styled.div<{ isClick: boolean }>`
+export const InvQElement = styled.div`
   width: 90%;
 
   margin: 10px auto 10px auto;

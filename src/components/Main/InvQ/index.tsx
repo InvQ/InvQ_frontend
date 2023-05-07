@@ -17,7 +17,6 @@ export const InvQ: React.FC<InvQArrData> = ({ question, answer }) => {
   }, [questionClose]);
   return (
     <S.InvQElement
-      isClick={questionClose}
       onClick={() => {
         setQuestionClose(!questionClose);
       }}
