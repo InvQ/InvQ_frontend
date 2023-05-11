@@ -64,7 +64,8 @@
     "lint-staged": "^13.2.0",
     "prettier": "^2.8.4",
     "typescript": "^4.9.5",
-    "vite": "^4.2.0"
+    "vite": "^4.2.0",
+    "webpack": "^5.82.0"
   },
   "packageManager": "yarn@3.4.1"
 }
